@@ -138,6 +138,24 @@ public class CalculadorImpuestos {
         double rango4[] = {200000000,500000000,4};
 
         if (precio > rango1[0] && precio < rango1[1]){
+            /*----Descuentos individuales-------------*/
+            if (descProntoPago){
+                pago = (precio*rango1[2]/100)-15000;
+                return pago;
+            }
+            if (descServicioPublico){
+                pago = (precio*rango1[2]/100)-50000;
+                return pago;
+            }
+            if (descTrasladoCuenta){
+                pago = (precio*rango1[2]/100)-4250;
+                return pago;
+            }
+            /*----Descuentos grupales-------------*/
+            if (descProntoPago && descServicioPublico){
+                pago = (precio*rango1[2]/100)-65000;
+                return pago;
+            }
             pago = precio*rango1[2]/100;
         }
         if (precio > rango2[0] && precio < rango2[1]){
