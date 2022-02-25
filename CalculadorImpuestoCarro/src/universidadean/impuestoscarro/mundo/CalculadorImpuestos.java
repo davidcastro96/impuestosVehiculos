@@ -133,8 +133,23 @@ public class CalculadorImpuestos {
         double pago = 0.0;
         double precio = darVehiculoActual().darPrecio();
 
-        // TODO: Encontrar el valor del pago de impuesto de acuerdo a los datos de entrada
+        double rango1[] = {0,30000000,1.5};
+        double rango2[] = {30000000,70000000,2.0};
+        double rango3[] = {70000000,200000000,2.5};
+        double rango4[] = {200000000,500000000,4};
 
+        if (precio > rango1[0] && precio < rango1[1]){
+            pago = precio*rango1[2]/100;
+        }
+        if (precio > rango2[0] && precio < rango2[1]){
+            pago = precio*rango2[2]/100;
+        }
+        if (precio > rango3[0] && precio < rango3[1]){
+            pago = precio*rango3[2]/100;
+        }
+        if (precio > rango4[0] && precio < rango4[1]){
+            pago = precio*rango4[2]/100;
+        }
         return pago;
     }
 
