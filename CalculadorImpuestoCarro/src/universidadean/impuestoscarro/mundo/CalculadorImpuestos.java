@@ -14,7 +14,6 @@ package universidadean.impuestoscarro.mundo;
 
 import javax.swing.*;
 import java.io.*;
-import java.util.*;
 
 /**
  * Calculador de impuestos.
@@ -302,10 +301,16 @@ public class CalculadorImpuestos {
      *
      * @return Promedio de precios
      */
-    public double promedioPreciosVehiculos() {
+    public String promedioPreciosVehiculos() {
+        double precio = 0.0;
         double promedio = 0.0;
-
-        return promedio;
+        String Strpromedio = "";
+        for (Vehiculo vehiculo : vehiculos) {
+            precio += vehiculo.darPrecio();
+        }
+        promedio = precio / vehiculos.length;
+        Strpromedio = String.format("$%,.2f",promedio);
+        return "Promedio de precios: "+Strpromedio;
     }
 
 

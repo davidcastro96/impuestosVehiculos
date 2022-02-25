@@ -246,7 +246,7 @@ public class InterfazImpuestosCarro extends JFrame {
      * Llamado para realizar el método de extensión 2.
      */
     public void reqFuncOpcion2() {
-        double respuesta = calculador.promedioPreciosVehiculos();
+        String respuesta = calculador.promedioPreciosVehiculos();
         JOptionPane.showMessageDialog(this, respuesta, "Respuesta", JOptionPane.INFORMATION_MESSAGE);
     }
 
