@@ -261,29 +261,17 @@ public class CalculadorImpuestos {
      * @return El vehículo más antiguo.
      */
     public Vehiculo buscarVehiculoMasAntiguo() {
-        Vehiculo buscado = null;
-
-        // TODO: Buscar el vehículo más antiguo del sistema
-
+        int max = 2017;
+        int ano = 0;
+        Vehiculo auto = null;
         for (Vehiculo vehiculo : vehiculos) {
-            int ano_mayor = 0;
 
-            System.out.println("paso 1 "+ano_mayor);
-
-            if (Integer.parseInt(vehiculo.darAnio())>ano_mayor) {
-                ano_mayor = Integer.parseInt(vehiculo.darAnio());
-                System.out.println("dos " + ano_mayor);
-
-                int rec = Integer.parseInt(vehiculo.darAnio());
-
-                if (rec > ano_mayor) {
-                    System.out.println(Integer.parseInt(vehiculo.darAnio()));
-                }
-                return vehiculo;
+            if (Integer.parseInt(vehiculo.darAnio())<max) {
+                ano = Integer.parseInt(vehiculo.darAnio());
+                auto = vehiculo;
             }
-            return vehiculo;
         }
-        return buscado;
+        return auto;
     }
 
     /**
