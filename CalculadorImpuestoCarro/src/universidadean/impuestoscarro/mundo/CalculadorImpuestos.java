@@ -229,8 +229,14 @@ public class CalculadorImpuestos {
      */
     public Vehiculo buscarVehiculoMasCaro() {
         Vehiculo masCaro = null;
-
+        double vehiMasCaro = 0;
         // TODO: Buscar el vehículo más caro del arreglo de vehículos
+        for (Vehiculo vehiculo:vehiculos){
+            if (vehiculo.darPrecio()>vehiMasCaro){
+                vehiMasCaro = vehiculo.darPrecio();
+                masCaro = vehiculo;
+            }
+        }
 
         return masCaro;
 
@@ -249,6 +255,8 @@ public class CalculadorImpuestos {
             if (marca_a_buscar.equals(vehiculo.darMarca())){
                 return vehiculo;
             }
+
+
         }
         return buscado;
     }
