@@ -130,6 +130,10 @@ public class CalculadorImpuestos {
      */
     public double calcularPago(boolean descProntoPago, boolean descServicioPublico, boolean descTrasladoCuenta) {
         double pago = 0.0;
+        double pagoConDescuento = 0.0;
+        double pagoCon2Descuentos = 0.0;
+        double pagoCon3Descuentos = 0.0;
+
         double precio = darVehiculoActual().darPrecio();
 
         double rango1[] = {0,30000000,1.5};
@@ -138,33 +142,191 @@ public class CalculadorImpuestos {
         double rango4[] = {200000000,500000000,4};
 
         if (precio > rango1[0] && precio < rango1[1]){
-            /*----Descuentos individuales-------------*/
-            if (descProntoPago){
-                pago = (precio*rango1[2]/100)-15000;
-                return pago;
+            /*----------todos los 3 decuentos----------*/
+            if (descProntoPago && descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango1[2]/100);
+                pagoCon3Descuentos = pago - (pago*10/100+50000);
+                pagoCon3Descuentos = pagoCon3Descuentos - (pagoCon3Descuentos*5/100);
+                return pagoCon3Descuentos;
             }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descServicioPublico){
+                pago = (precio*rango1[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100+50000);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango1[2]/100);
+                pagoCon2Descuentos = pago - (50000);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descTrasladoCuenta){
+                pago = (precio*rango1[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------1 decuentos----------*/
+            if (descProntoPago){
+                pago = (precio*rango1[2]/100);
+                pagoConDescuento = pago - (pago*10/100);
+                return pagoConDescuento;
+            }
+            /*----------1 decuentos----------*/
             if (descServicioPublico){
                 pago = (precio*rango1[2]/100)-50000;
                 return pago;
             }
+            /*----------1 decuentos----------*/
             if (descTrasladoCuenta){
-                pago = (precio*rango1[2]/100)-4250;
-                return pago;
-            }
-            /*----Descuentos grupales-------------*/
-            if (descProntoPago && descServicioPublico){
-                pago = (precio*rango1[2]/100)-65000;
-                return pago;
+                pago = (precio*rango1[2]/100);
+                pagoConDescuento = pago - (pago*5/100);
+                return pagoConDescuento;
             }
             pago = precio*rango1[2]/100;
         }
         if (precio > rango2[0] && precio < rango2[1]){
+            /*----------todos los 3 decuentos----------*/
+            if (descProntoPago && descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango2[2]/100);
+                pagoCon3Descuentos = pago - (pago*10/100+50000);
+                pagoCon3Descuentos = pagoCon3Descuentos - (pagoCon3Descuentos*5/100);
+                return pagoCon3Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descServicioPublico){
+                pago = (precio*rango2[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100+50000);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango2[2]/100);
+                pagoCon2Descuentos = pago - (50000);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descTrasladoCuenta){
+                pago = (precio*rango2[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------1 decuentos----------*/
+            if (descProntoPago){
+                pago = (precio*rango2[2]/100);
+                pagoConDescuento = pago - (pago*10/100);
+                return pagoConDescuento;
+            }
+            /*----------1 decuentos----------*/
+            if (descServicioPublico){
+                pago = (precio*rango2[2]/100)-50000;
+                return pago;
+            }
+            /*----------1 decuentos----------*/
+            if (descTrasladoCuenta){
+                pago = (precio*rango2[2]/100);
+                pagoConDescuento = pago - (pago*5/100);
+                return pagoConDescuento;
+            }
             pago = precio*rango2[2]/100;
         }
         if (precio > rango3[0] && precio < rango3[1]){
+            /*----------todos los 3 decuentos----------*/
+            if (descProntoPago && descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango3[2]/100);
+                pagoCon3Descuentos = pago - (pago*10/100+50000);
+                pagoCon3Descuentos = pagoCon3Descuentos - (pagoCon3Descuentos*5/100);
+                return pagoCon3Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descServicioPublico){
+                pago = (precio*rango3[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100+50000);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango3[2]/100);
+                pagoCon2Descuentos = pago - (50000);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descTrasladoCuenta){
+                pago = (precio*rango3[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------1 decuentos----------*/
+            if (descProntoPago){
+                pago = (precio*rango3[2]/100);
+                pagoConDescuento = pago - (pago*10/100);
+                return pagoConDescuento;
+            }
+            /*----------1 decuentos----------*/
+            if (descServicioPublico){
+                pago = (precio*rango3[2]/100)-50000;
+                return pago;
+            }
+            /*----------1 decuentos----------*/
+            if (descTrasladoCuenta){
+                pago = (precio*rango3[2]/100);
+                pagoConDescuento = pago - (pago*5/100);
+                return pagoConDescuento;
+            }
             pago = precio*rango3[2]/100;
         }
         if (precio > rango4[0] && precio < rango4[1]){
+            /*----------todos los 3 decuentos----------*/
+            if (descProntoPago && descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango4[2]/100);
+                pagoCon3Descuentos = pago - (pago*10/100+50000);
+                pagoCon3Descuentos = pagoCon3Descuentos - (pagoCon3Descuentos*5/100);
+                return pagoCon3Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descServicioPublico){
+                pago = (precio*rango4[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100+50000);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descServicioPublico && descTrasladoCuenta){
+                pago = (precio*rango4[2]/100);
+                pagoCon2Descuentos = pago - (50000);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------2 decuentos----------*/
+            if (descProntoPago && descTrasladoCuenta){
+                pago = (precio*rango4[2]/100);
+                pagoCon2Descuentos = pago - (pago*10/100);
+                pagoCon2Descuentos = pagoCon2Descuentos - (pago*5/100);
+                return pagoCon2Descuentos;
+            }
+            /*----------1 decuentos----------*/
+            if (descProntoPago){
+                pago = (precio*rango4[2]/100);
+                pagoConDescuento = pago - (pago*10/100);
+                return pagoConDescuento;
+            }
+            /*----------1 decuentos----------*/
+            if (descServicioPublico){
+                pago = (precio*rango4[2]/100)-50000;
+                return pago;
+            }
+            /*----------1 decuentos----------*/
+            if (descTrasladoCuenta){
+                pago = (precio*rango4[2]/100);
+                pagoConDescuento = pago - (pago*5/100);
+                return pagoConDescuento;
+            }
             pago = precio*rango4[2]/100;
         }
         return pago;
